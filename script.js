@@ -9,22 +9,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 document.addEventListener("DOMContentLoaded", () => {
-    const elements = document.querySelectorAll(".animated-text");
-    let globalLetterIndex = 0;      // Counts letters across all elements
-    const perLetterDelay = 0.08;    // Seconds between letters
-  
-    elements.forEach(el => {
-      const text = el.textContent;
-      el.textContent = "";           // Clear the element
-  
-      [...text].forEach(char => {
-        if (char.trim() !== '') { // ignores spaces, tabs, newlines
-          const span = document.createElement("span");
-          span.textContent = char;
-          span.style.animationDelay = `${globalLetterIndex * perLetterDelay}s`;
-          el.appendChild(span);
-          globalLetterIndex++;
-        }
-      });
+  const elements = document.querySelectorAll(".animated-text");
+  let globalLetterIndex = 0;      // Counts letters across all elements
+  const perLetterDelay = 0.08;    // Seconds between letters
+
+  elements.forEach(el => {
+    const text = el.textContent;
+    el.textContent = "";           // Clear the element
+
+    [...text].forEach(char => {
+      if (char.trim() !== '') { // ignores spaces, tabs, newlines
+        const span = document.createElement("span");
+        span.textContent = char;
+        span.style.animationDelay = `${globalLetterIndex * perLetterDelay}s`;
+        el.appendChild(span);
+        globalLetterIndex++;
+      }
+    });
+  });
+});
+
+fetch('links.json')
+  .then(res => res.json())
+  .then(links => {
+    document.querySelectorAll('a[data-link]').forEach(a => {
+      const key = a.getAttribute('data-link');
+      if (links[key]) {
+        a.href = links[key];
+      }
     });
   });
