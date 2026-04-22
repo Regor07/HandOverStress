@@ -13,15 +13,35 @@
     body {
       scroll-behavior: smooth;
       font-family: 'Segoe UI', sans-serif;
+      margin: 0;
     }
 
     .navbar {
-      background: #f7f3ef;
+      transition: all .35s ease;
+      background: transparent;
+      background: rgba(247, 243, 239, 0.85);
+      backdrop-filter: blur(10px);
     }
 
     .navbar-brand {
       font-weight: 600;
       font-size: 1.4rem;
+    }
+
+    .navbar.scrolled {
+      background: #f7f3ef;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+
+    .navbar.scrolled .navbar-brand,
+    .navbar.scrolled .nav-link {
+      color: #333 !important;
+    }
+
+    .navbar .nav-link {
+      color: rgba(0,0,0,.75);
     }
 
     .carousel-item {
@@ -43,8 +63,15 @@
       color: white;
     }
 
-    section {
-      padding: 80px 0;
+    .carousel-overlay h1 {
+      font-size: 3.2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .carousel-overlay p {
+      font-size: 1.4rem;
+      margin-top: 10px;
     }
 
     h1 {
@@ -55,7 +82,7 @@
     .service-card img,
     .product-card img {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 14px;
       margin-bottom: 15px;
     }
 
@@ -77,10 +104,94 @@
 
     .cursive {
       font-family: 'Brush Script MT', cursive;
+      color: #b48a78;
+    }
+
+    .card .cursive {
+      font-size: 2.2rem;
+      color: #6b5a52;
+      text-align: center;
+    }
+
+    .card .cursive::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: rgba(177, 131, 108, 0.6);
+      margin: 10px auto 0;
+    }
+
+    .section-title {
+      font-size: 2.6rem;
+      font-family: 'Brush Script MT', cursive;
+      color: #b48a78;
+      margin-bottom: 40px;
     }
 
     section {
-      padding: 60px 0;
+      padding: 100px 0;
+    }
+
+    .card {
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    }
+
+    #home {
+      padding-top: 76px;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    h4 {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .service-card img {
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .container {
+      max-width: 1200px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .card {
+      border-color: rgba(177, 131, 108, 0.6) !important;
+    }
+
+    #packages .card-body span {
+      width: 100%;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      padding: 12px 0;
+    }
+
+    #packages .card-body > div {
+      padding: 10px 0;
+    }
+
+    #packages .card-body span:last-child {
+      border-bottom: none;
+    }
+
+    .card-body p {
+  text-align: center;
+}
+
+    #products p {
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
@@ -99,13 +210,12 @@
           <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="#packages">Packages</a></li>
+          <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
           <li class="nav-item"><a class="nav-link" href="#gifts">Gift Certificates</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
-          <li class="nav-item ms-lg-3">
-            <a class="btn btn-theme" href="#schedule">Schedule Appointment</a>
-          </li>
         </ul>
+        <a class="btn btn-theme ms-lg-4 my-2 my-lg-0" href="#schedule">Schedule Appointment</a>
       </div>
     </div>
   </nav>
@@ -155,74 +265,166 @@
   <!-- SERVICES -->
   <section id="services" class="bg-light">
     <div class="container">
-      <h1 class="cursive">Our Services</h1>
+      <h1 class="section-title">Our Services</h1>
       <div class="row g-4">
-        <div class="col-md-3 service-card text-center">
-          <img src="images/swedish.jpg">
+        <div class="col-md-3 service-card">
+          <img src="images/swedish_masage.png">
           <h4>Swedish Massage</h4>
           <p>Pleasant therapy ideal for stress relief, relaxation, and as a remedial treatment for physical and
             emotional conditions.</p>
         </div>
-        <div class="col-md-3 service-card text-center">
-          <img src="images/deep.jpg">
+        <div class="col-md-3 service-card">
+          <img src="images/prenatal_perinatal_massage.png">
           <h4>Prenatal & Perinatal Massage</h4>
           <p>Massage tailored for your individual needs - before, during and after your pregnancy.</p>
         </div>
-        <div class="col-md-3 service-card text-center">
-          <img src="images/hotstone.jpg">
+        <div class="col-md-3 service-card">
+          <img src="images/head_neck_shoulders.png">
           <h4>Head, Neck & Shoulders Massage</h4>
           <p>A deep tissue massage of the head, neck, and shoulders. Perfect for those "on-the-go"!</p>
         </div>
-        <div class="col-md-3 service-card text-center">
-          <img src="images/hotstone.jpg">
+        <div class="col-md-3 service-card">
+          <img src="images/facial_massage.png">
           <h4>Facial Massage</h4>
-          <p>The muscles in your face require the same TLC as a sore back or shoulder!n</p>
+          <p>The muscles in your face require the same TLC as a sore back or shoulder!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section id="packages">
+    <div class="container">
+      <h1 class="section-title">Massage Package Discounts</h1>
+      <div class="row g-4 justify-content-center">
+        <div class="col-12 col-md-4">
+          <div class="card rounded-5 border-3 h-100" style="border-color: #b1836c;">
+            <div class="card-body">
+              <h5 class="card-title cursive text-dark fw-normal mb-3">30 Minute Massage Packages</h5>
+              <div class="d-flex align-items-center">
+                <i class="bi bi-flower1 me-3 fs-5 text-muted"></i>
+                <span class="py-2">
+                  3 Sessions
+                  <span class="text-muted">(30 min)</span>
+                  <strong class="float-end">$105</strong>
+                </span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="bi bi-flower1 me-3 fs-5 text-muted"></i>
+                <span class="py-2">
+                  5 Sessions
+                  <span class="text-muted">(30 min)</span>
+                  <strong class="float-end">$150</strong>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="card rounded-5 border-3 h-100" style="border-color: #b1836c;">
+            <div class="card-body">
+              <h5 class="card-title cursive text-dark fw-normal mb-3">60 Minute Massage Packages</h5>
+              <div class="d-flex align-items-center">
+                <i class="bi bi-flower1 me-3 fs-5 text-muted"></i>
+                <span class="py-2">
+                  3 Sessions
+                  <span class="text-muted">(60 min)</span>
+                  <strong class="float-end">$180</strong>
+                </span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="bi bi-flower1 me-3 fs-5 text-muted"></i>
+                <span class="py-2">
+                  5 Sessions
+                  <span class="text-muted">(60 min)</span>
+                  <strong class="float-end">$275</strong>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="card rounded-5 border-3 h-100" style="border-color: #b1836c;">
+            <div class="card-body">
+              <h5 class="card-title cursive text-dark fw-normal mb-3">90 Minute Massage Packages</h5>
+              <div class="d-flex align-items-center">
+                <i class="bi bi-flower1 me-3 fs-5 text-muted"></i>
+                <span class="py-2">
+                  3 Sessions
+                  <span class="text-muted">(90 min)</span>
+                  <strong class="float-end">$270</strong>
+                </span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="bi bi-flower1 me-3 fs-5 text-muted"></i>
+                <span class="py-2">
+                  5 Sessions
+                  <span class="text-muted">(90 min)</span>
+                  <strong class="float-end">$425</strong>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- PRODUCTS -->
-  <section id="packages">
-    <div class="container">
-      <h1 class="cursive">Massage Package Discounts</h1>
-      <div class="g-4" style="display: flex; justify-content: space-evenly;">
-        <div class="card rounded-5 border-3" style="border-color: #b1836c;">
-          <div class="card-body text-center">
-            <h4 class="card-title py-4 cursive">30 Minute Massage Packages</h4>
-            <div class="d-flex align-items-center">
-              <i class="bi bi-flower1 pe-3"></i>
-              <span class="card-text py-2">3 (30 Minute) Massage Sessions - $105</span>
-            </div>
-            <div class="d-flex align-items-center">
-              <i class="bi bi-flower1 pe-3"></i>
-              <span class="card-text py-2">5 (30 Minute) Massage Sessions - $150</span>
-            </div>
-          </div>
-        </div>
-        <div class="card rounded-5 border-3" style="border-color: #b1836c;">
-          <div class="card-body text-center">
-            <h4 class="card-title py-4 cursive">60 Minute Massage Packages</h4>
-            <div class="d-flex align-items-center">
-              <i class="bi bi-cart pe-3"></i>
-              <span class="card-text py-2">3 (60 Minute) Massage Sessions - $180</span>
-            </div>
-            <div class="d-flex align-items-center">
-              <i class="bi bi-cart pe-3"></i>
-              <span class="card-text py-2">5 (60 Minute) Massage Sessions - $275</span>
+  <section id="products" class="bg-light">
+    <div class="container text-center">
+      <h1 class="section-title">Products</h1>
+      <div class="p-3">
+        <img src="images/nature_sunshine.jpg" />
+        <p class="cursive fs-3 mb-3">Born in the Wild, Proven in the Lab</p>
+        <p>Enjoy a Little Peace & Tranquility with a powerful fusion of calming herbs and synergistic nutrients.</p>
+        <p>Delivering the results you expect is a strenuous process. But Nature’s Sunshine wouldn’t have it any other
+          way. They travel the world seeking the earth’s most pure and potent ingredients and use more than 600 tests to
+          ensure each one of their herbal formulas is ready to do exactly what it’s supposed to do.</p>
+        <a class="btn btn-theme" href="https://www.naturessunshine.com/?referrer=241274&offer=NSP">Purchase Products</a>
+      </div>
+      <div class="row g-4">
+        <div class="col-12 col-md-4">
+          <div class="card rounded-5 border-3 h-100" style="border-color: #b1836c;">
+            <div class="card-body d-flex flex-column">
+              <img src="images/ashwaganda.png" />
+              <h3 class="cursive mb-3">Pure</h3>
+              <p>Purity, First and Foremost</p>
+              <p>Nature’s Sunshine keeps it simple, using only the cleanest, purest ingredients for your health. That
+                means Non-GM0, organic and regenerative whenever possible, and rejecting anything that doesn’t meet their
+                exacting, industry-leading standards. Their strict specifications often mean they reject raw materials
+                that others will use.</p>
+              <a class="btn btn-theme mt-auto" href="https://www.naturessunshine.com/?referrer=241274&offer=NSP">Purchase
+                Products</a>
             </div>
           </div>
         </div>
-        <div class="card rounded-5 border-3" style="border-color: #b1836c;">
-          <div class="card-body text-center">
-            <h4 class="card-title py-4 cursive">90 Minute Massage Packages</h4>
-            <div class="d-flex align-items-center">
-              <i class="bi bi-flower1 pe-3"></i>
-              <span class="card-text py-2">3 (90 Minute) Massage Sessions - $270</span>
+        <div class="col-12 col-md-4">
+          <div class="card rounded-5 border-3 h-100" style="border-color: #b1836c;">
+            <div class="card-body d-flex flex-column">
+              <img src="images/elevated_eleven.png" />
+              <h3 class="cursive mb-3">Potent</h3>
+              <p>Delivering Nature’s Power to You</p>
+              <p>Nature’s Sunshine personally goes to the furthest reaches of the globe to find and verify the highest
+                quality herbs and natural ingredients, and they ensure the living nutrients in their ingredients are
+                protected and delivered to you just as nature intended.</p>
+              <a class="btn btn-theme mt-auto" href="https://www.naturessunshine.com/?referrer=241274&offer=NSP">Purchase
+                Products</a>
             </div>
-            <div class="d-flex align-items-center">
-              <i class="bi bi-flower1 pe-3"></i>
-              <span class="card-text py-2">5 (90 Minute) Massage Sessions - $425</span>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="card rounded-5 border-3 h-100" style="border-color: #b1836c;">
+            <div class="card-body d-flex flex-column">
+              <img src="images/pau_darco.png" />
+              <h3 class="cursive mb-3">Proven</h3>
+              <p>The Brains Behind the Bottle</p>
+              <p>It’s only natural to want products you can trust. That’s why Nature’s Sunshine looks to the knowledge of
+                those who have turned to nature’s power for their wellness needs in ages past. Naturopaths, herbalists and
+                holistic healers. There’s a reason their traditions have survived…because hundreds—and sometimes even
+                thousands—of years demonstrate their effectiveness.</p>
+              <a class="btn btn-theme mt-auto" href="https://www.naturessunshine.com/?referrer=241274&offer=NSP">Purchase
+                Products</a>
             </div>
           </div>
         </div>
@@ -233,7 +435,7 @@
   <!-- GIFT CERTIFICATES -->
   <section id="gifts" class="bg-light">
     <div class="container text-center">
-      <h1 class="cursive">Gift Certificates</h1>
+      <h1 class="section-title">Gift Certificates</h1>
       <p>Give the gift of relaxation for any occasion.</p>
       <button class="btn btn-theme">Purchase Gift Certificate</button>
     </div>
@@ -242,7 +444,7 @@
   <!-- ABOUT -->
   <section id="about">
     <div class="container">
-      <h1class="cursive">About Hand Over Stress</h1>
+      <h1 class="section-title">About Hand Over Stress</h1>
         <p class="text-center">
           At Hand Over Stress, we believe self-care is essential. Our certified therapists provide personalized sessions
           that ease tension and promote deep relaxation.
@@ -253,7 +455,7 @@
   <!-- CONTACT -->
   <section id="contact" class="bg-light">
     <div class="container text-center">
-      <h1 class="cursive">Contact Us</h1>
+      <h1 class="section-title">Contact Us</h1>
       <p>(555) 123-4567</p>
       <p>email@example.com</p>
     </div>
@@ -262,7 +464,7 @@
   <!-- SCHEDULE -->
   <section id="schedule">
     <div class="container text-center">
-      <h1 class="cursive">Schedule Appointment</h1>
+      <h1 class="section-title">Schedule Appointment</h1>
       <p>Online booking coming soon.</p>
     </div>
   </section>
