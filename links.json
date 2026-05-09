@@ -1,9 +1,76 @@
-[
-        {"package":"30 minute massage X 2", "link":"..."},
-        {"package":"30 minute massage X 3", "link":"..."},
-        {"package":"30 minute massage X 5", "link":"..."},
-        {"package":"60 minute massage X 3", "link":"..."},
-        {"package":"60 minute massage X 5", "link":"..."},
-        {"package":"90 minute massage X 3", "link":"..."},
-        {"package":"90 minute massage X 5", "link":"..."}
-]
+{
+        "links": [
+                {
+                        "id": "30_min_massage_x_3",
+                        "label": "30 Minute Massage X 3",
+                        "url": "https://square.link/u/RfQTIBSH",
+                        "category": "package",
+                        "active": true,
+                        "target": "_blank"
+                },
+                {
+                        "id": "30_min_massage_x_5",
+                        "label": "30 Minute Massage X 5",
+                        "url": "https://square.link/u/nuNv0wzP",
+                        "category": "package",
+                        "active": true,
+                        "target": "_blank"
+                },
+                {
+                        "id": "60_min_massage_x_3",
+                        "label": "60 Minute Massage X 3",
+                        "url": "https://square.link/u/BYMdlaQv",
+                        "category": "package",
+                        "active": true,
+                        "target": "_blank"
+                },
+                {
+                        "id": "60_min_massage_x_5",
+                        "label": "60 Minute Massage X 5",
+                        "url": "https://square.link/u/4VwLGosd",
+                        "category": "package",
+                        "active": true,
+                        "target": "_blank"
+                },
+                {
+                        "id": "90_min_massage_x_3",
+                        "label": "90 Minute Massage X 3",
+                        "url": "https://square.link/u/aPyHHaY2",
+                        "category": "package",
+                        "active": true,
+                        "target": "_blank"
+                },
+                {
+                        "id": "90_min_massage_x_5",
+                        "label": "90 Minute Massage X 5",
+                        "url": "https://square.link/u/bYJhVZSf",
+                        "category": "package",
+                        "active": true,
+                        "target": "_blank"
+                },
+                {
+                        "id": "gift_cards",
+                        "label": "Gift Cards",
+                        "url": "https://app.squareup.com/gift/DX1JMPCF3TJRY/order",
+                        "category": "gift_cards",
+                        "active": true,
+                        "target": "_blank"
+                },
+                {
+                        "id": "ns_1",
+                        "label": "Nature Sunshine 1",
+                        "url": "https://www.naturessunshine.com/?referrer=241274&offer=NSP",
+                        "category": "product",
+                        "active": true,
+                        "target": "_blank"
+                },
+                {
+                        "id": "book_massage",
+                        "label": "Book Massage",
+                        "url": "https://square.site/book/2KZ6TAG5KNXX7/hand-over-stress-augusta-ga",
+                        "category": "calendar",
+                        "active": true,
+                        "target": "_blank"
+                }
+        ]
+}

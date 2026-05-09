@@ -1,14 +1,3 @@
-fetch('links.json')
-  .then(res => res.json())
-  .then(links => {
-    document.querySelectorAll('a[data-link]').forEach(a => {
-      const key = a.getAttribute('data-link');
-      if (links[key]) {
-        a.href = links[key];
-      }
-    });
-  });
-
 window.addEventListener('scroll', function () {
   const nav = document.querySelector('.navbar');
   if (window.scrollY > 80) {
@@ -17,3 +6,18 @@ window.addEventListener('scroll', function () {
     nav.classList.remove('scrolled');
   }
 });
+
+fetch('/links.json')
+  .then(res => res.json())
+  .then(data => {
+    document.querySelectorAll('[data-link]').forEach(a => {
+      const id = a.dataset.link;
+      const linkObj = data.links.find(l => l.id === id);
+
+      if (!linkObj) return;
+
+      a.href = linkObj.url;
+      a.target = linkObj.target;
+      a.rel = "noopener";
+    });
+  });
