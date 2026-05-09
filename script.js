@@ -7,7 +7,7 @@ window.addEventListener('scroll', function () {
   }
 });
 
-fetch('/links.json')
+fetch('links.json')
   .then(res => res.json())
   .then(data => {
     document.querySelectorAll('[data-link]').forEach(a => {
