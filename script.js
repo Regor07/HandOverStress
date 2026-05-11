@@ -8,8 +8,7 @@ window.addEventListener('scroll', function () {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('links.json')
-    .then(res => res.json())
+  fetch('links.json').then(res => res.json())
     .then(data => {
       console.log(data)
       document.querySelectorAll('[data-link]').forEach(a => {
