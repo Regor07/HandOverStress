@@ -22,4 +22,28 @@ document.addEventListener('DOMContentLoaded', () => {
         a.rel = "noopener";
       });
     });
+
+  const navbarCollapse = document.querySelector('.navbar-collapse');
+  const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+    toggle: false
+  });
+
+  // Close menu when a nav link is clicked
+  document.querySelectorAll('.navbar-nav .nav-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      if (navbarCollapse.classList.contains('show')) {
+        bsCollapse.hide();
+      }
+    });
+  });
+
+  // Close menu when clicking outside of it
+  document.addEventListener('click', function (event) {
+    const isClickInside = navbarCollapse.contains(event.target) ||
+      event.target.classList.contains('navbar-toggler');
+
+    if (!isClickInside && navbarCollapse.classList.contains('show')) {
+      bsCollapse.hide();
+    }
+  });
 })
