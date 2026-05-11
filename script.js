@@ -1,17 +1,19 @@
-window.addEventListener('scroll', function () {
-  const nav = document.querySelector('.navbar');
-  if (window.scrollY > 80) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
-  }
-});
+document.addEventListener('DOMContentLoaded', function () {
 
-document.addEventListener('DOMContentLoaded', () => {
+  // ===== Navbar Scroll Effect =====
+  const nav = document.querySelector('.navbar');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 80) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // ===== Dynamic Links =====
   fetch('links.json')
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       document.querySelectorAll('[data-link]').forEach(a => {
         const id = a.dataset.link;
         const linkObj = data.links.find(l => l.id === id);
@@ -22,29 +24,30 @@ document.addEventListener('DOMContentLoaded', () => {
         a.rel = "noopener";
       });
     });
-})
-document.addEventListener('DOMContentLoaded', function () {
-  const navbarCollapse = document.querySelector('.navbar-collapse');
-  const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-    toggle: false
-  });
 
-  // Close menu when a nav link is clicked
-  document.querySelectorAll('.navbar-nav .nav-link').forEach(function (link) {
-    link.addEventListener('click', function () {
+  // ===== Navbar Collapse Fix (iPad Safe Version) =====
+  const navbarCollapse = document.querySelector('.navbar-collapse');
+  if (!navbarCollapse) return;
+
+  const collapseInstance = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+
+  // Close when clicking nav link (touch-safe)
+  document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
       if (navbarCollapse.classList.contains('show')) {
-        bsCollapse.hide();
+        collapseInstance.hide();
       }
     });
   });
 
-  // Close menu when clicking outside of it
-  document.addEventListener('click', function (event) {
-    const isClickInside = navbarCollapse.contains(event.target) ||
-      event.target.classList.contains('navbar-toggler');
+  // Close when clicking outside
+  document.addEventListener('click', (e) => {
+    const isInside = navbarCollapse.contains(e.target);
+    const isToggler = e.target.closest('.navbar-toggler');
 
-    if (!isClickInside && navbarCollapse.classList.contains('show')) {
-      bsCollapse.hide();
+    if (!isInside && !isToggler && navbarCollapse.classList.contains('show')) {
+      collapseInstance.hide();
     }
   });
+
 });
