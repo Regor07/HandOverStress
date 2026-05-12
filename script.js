@@ -1,8 +1,26 @@
+
+//////////////////////////////
+// iOS / Safari Fix (IMPORTANT)
+//////////////////////////////
+window.addEventListener('pageshow', function () {
+  const navbar = document.querySelector('.navbar-collapse');
+
+  if (navbar && navbar.classList.contains('show')) {
+    bootstrap.Collapse.getOrCreateInstance(navbar).hide();
+  }
+});
+
+
 document.addEventListener('DOMContentLoaded', function () {
 
-  // ===== Navbar Scroll Effect =====
+  //////////////////////////////
+  // Navbar Scroll Effect
+  //////////////////////////////
   const nav = document.querySelector('.navbar');
+
   window.addEventListener('scroll', function () {
+    if (!nav) return;
+
     if (window.scrollY > 80) {
       nav.classList.add('scrolled');
     } else {
@@ -10,7 +28,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // ===== Dynamic Links =====
+
+  //////////////////////////////
+  // Dynamic Links (links.json)
+  //////////////////////////////
   fetch('links.json')
     .then(res => res.json())
     .then(data => {
@@ -23,30 +44,51 @@ document.addEventListener('DOMContentLoaded', function () {
         a.target = linkObj.target;
         a.rel = "noopener";
       });
+    })
+    .catch(err => {
+      console.warn("links.json failed to load:", err);
     });
 
-  // ===== Navbar Collapse Fix (iPad Safe Version) =====
+
+  //////////////////////////////
+  // Navbar Collapse (iOS safe)
+  //////////////////////////////
   const navbarCollapse = document.querySelector('.navbar-collapse');
+
   if (!navbarCollapse) return;
 
-  const collapseInstance = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+  // Delay init slightly to avoid Safari layout issues
+  setTimeout(() => {
+    bootstrap.Collapse.getOrCreateInstance(navbarCollapse, {
+      toggle: false
+    });
+  }, 50);
 
-  // Close when clicking nav link (touch-safe)
+
+  //////////////////////////////
+  // Close menu on nav link tap
+  //////////////////////////////
   document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', function () {
+      const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+
       if (navbarCollapse.classList.contains('show')) {
-        collapseInstance.hide();
+        bsCollapse.hide();
       }
     });
   });
 
-  // Close when clicking outside
-  document.addEventListener('click', (e) => {
+
+  //////////////////////////////
+  // Close menu when clicking outside
+  //////////////////////////////
+  document.addEventListener('click', function (e) {
     const isInside = navbarCollapse.contains(e.target);
     const isToggler = e.target.closest('.navbar-toggler');
 
     if (!isInside && !isToggler && navbarCollapse.classList.contains('show')) {
-      collapseInstance.hide();
+      const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+      bsCollapse.hide();
     }
   });
 
