@@ -147,7 +147,7 @@
     }
 
     #home {
-      padding-top: 76px;
+      padding-top: 116px;
     }
 
     p {
@@ -219,6 +219,28 @@
       height: 100%;
       border: 0;
     }
+
+    .waitlist-bar {
+      position: fixed;
+      top: 76px;
+      /* same as your navbar height */
+      left: 0;
+      width: 100%;
+      background: #efe7df;
+      color: #5b4636;
+      text-align: center;
+      font-size: 0.95rem;
+      padding: 8px 10px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      letter-spacing: 0.3px;
+      z-index: 999;
+    }
+
+    .waitlist-bar a {
+      color: #5b4636;
+      font-weight: 600;
+      text-decoration: underline;
+    }
   </style>
 </head>
 
@@ -242,16 +264,14 @@
           <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
         </ul>
         <!-- <a class="btn btn-theme ms-lg-4 my-2 my-lg-0" data-link="book_massage">Schedule Appointment</a> -->
-        <div class="schedule-wrap ms-lg-4 my-2 my-lg-0 text-lg-center">
-          <a class="btn btn-theme" data-link="book_massage">
-            Schedule Appointment
-          </a>
-          <div class="waitlist-note d-none d-lg-block">
-            Fully booked? Join the waitlist after clicking
-          </div>
-        </div>
+        <a class="btn btn-theme" data-link="book_massage">
+          Schedule Appointment
+        </a>
       </div>
   </nav>
+  <div class="waitlist-bar">
+    Fully booked? <a data-link="book_massage">Join the waitlist.</a>
+  </div>
 
   <!-- CAROUSEL HOME -->
   <section id="home">
@@ -541,9 +561,6 @@
   </section>
 
   <footer>
-    <a href="https://inbox.squareup.com/t/29744290" class="text-link">
-      Or Text Us First
-    </a>
     © 2026 Hand Over Stress
   </footer>
 
