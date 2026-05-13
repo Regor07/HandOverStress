@@ -67,7 +67,23 @@
                 {
                         "id": "ns_magnesium",
                         "label": "Nature Sunshine Magnesium Complex",
-                        "url": "https://www.naturessunshine.com/product/magnesium-complex",
+                        "url": "https://www.naturessunshine.com/product/magnesium-complex?referrer=241274&offer=NSP",
+                        "category": "product",
+                        "active": true,
+                        "target": "_blank"
+                },
+                {
+                        "id": "ns_lavender",
+                        "label": "Nature Sunshine Lavender",
+                        "url": "https://www.naturessunshine.com/product/lavender-authentic-essential-oil-organic?referrer=241274&offer=NSP",
+                        "category": "product",
+                        "active": true,
+                        "target": "_blank"
+                },
+                {
+                        "id": "ns_tei_fu",
+                        "label": "Nature Sunshine Tei Fu Lotion",
+                        "url": "https://www.naturessunshine.com/product/tei-fu-recovery-massage-lotion?referrer=241274&offer=NSP",
                         "category": "product",
                         "active": true,
                         "target": "_blank"
