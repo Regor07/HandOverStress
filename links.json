@@ -75,7 +75,7 @@
                 {
                         "id": "ns_lavender",
                         "label": "Nature Sunshine Lavender",
-                        "url": "https://www.naturessunshine.com/product/lavender-authentic-essential-oil-organic?referrer=241274&offer=NSP",
+                        "url": "https://www.naturessunshine.com/product/lavender-authentic-essential-oil-organic",
                         "category": "product",
                         "active": true,
                         "target": "_blank"
@@ -83,7 +83,7 @@
                 {
                         "id": "ns_tei_fu",
                         "label": "Nature Sunshine Tei Fu Lotion",
-                        "url": "https://www.naturessunshine.com/product/tei-fu-recovery-massage-lotion?referrer=241274&offer=NSP",
+                        "url": "https://www.naturessunshine.com/product/tei-fu-recovery-massage-lotion",
                         "category": "product",
                         "active": true,
                         "target": "_blank"
