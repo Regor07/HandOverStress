@@ -65,6 +65,14 @@
                         "target": "_blank"
                 },
                 {
+                        "id": "ns_magnesium",
+                        "label": "Nature Sunshine Magnesium Complex",
+                        "url": "https://www.naturessunshine.com/product/magnesium-complex",
+                        "category": "product",
+                        "active": true,
+                        "target": "_blank"
+                },
+                {
                         "id": "book_massage",
                         "label": "Book Massage",
                         "url": "https://square.site/book/2KZ6TAG5KNXX7/hand-over-stress-augusta-ga",
