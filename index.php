@@ -1,3 +1,10 @@
+<?php 
+session_start(); 
+$old = $_SESSION['form_old'] ?? [];
+unset($_SESSION['form_old']);
+$scroll = $_SESSION['scroll_to_form'] ?? false;
+unset($_SESSION['scroll_to_form']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -565,6 +572,76 @@
       </div>
     </div>
   </section>
+  <!--message-->
+  <div class="row mt-5">
+    <div class="col-lg-8 mx-auto">
+      <div id="contact-form" class="card rounded-4 border-0 shadow-sm">
+        <div class="card-body p-4">
+          <h3 class="text-center mb-4">Send Us a Message</h3>
+          <?php if (!empty($_SESSION['form_errors'])): ?>
+          <div class="alert alert-danger">
+            <ul class="mb-0">
+              <?php foreach ($_SESSION['form_errors'] as $error): ?>
+              <li>
+                <?php echo htmlspecialchars($error); ?>
+              </li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
+          <?php unset($_SESSION['form_errors']); endif; ?>
+          <?php if (!empty($_SESSION['form_success'])): ?>
+          <div class="alert alert-success">
+            <?php echo htmlspecialchars($_SESSION['form_success']); ?>
+          </div>
+          <?php unset($_SESSION['form_success']); endif; ?>
+          <form action="send-message.php" method="POST">
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" id="name" name="name" class="form-control" autocomplete="name" required value="<?php echo htmlspecialchars($old['name'] ?? ''); ?>">
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label">Phone</label>
+                <input type="tel" id="phone" name="phone" class="form-control" autocomplete="tel" value="<?php echo htmlspecialchars($old['phone'] ?? ''); ?>">
+              </div>
+              <div class="col-md-4 mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-control" autocomplete="email" value="<?php echo htmlspecialchars($old['email'] ?? ''); ?>">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label d-block">
+                Preferred Method of Communication
+              </label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="contact_method" value="Voice" id="voice" <?php echo (($old['contact_method'] ?? '') === 'Voice') ? 'checked' : ''; ?>>
+                <label class="form-check-label" for="voice">Voice</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="contact_method" value="Text" id="text" <?php echo (($old['contact_method'] ?? '') === 'Text') ? 'checked' : ''; ?>>
+                <label class="form-check-label" for="text">Text</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="contact_method" value="Email" id="emailPref" <?php echo (($old['contact_method'] ?? '') === 'Email') ? 'checked' : ''; ?>>
+                <label class="form-check-label" for="emailPref">Email</label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Message</label>
+              <textarea name="message" rows="5" class="form-control" placeholder="Tell us how we can help..."
+                required><?php echo htmlspecialchars($old['message'] ?? ''); ?></textarea>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-theme px-5">
+                Send Message
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
     © 2026 Hand Over Stress
